@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="ApnaDukaan_v1.Controllers.ProductController">
+    <Position X="14.75" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAABAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\ProductController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="productService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ApnaDukaan_v1.BLL.Services.ProductService">
+    <Position X="9.75" Y="8.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAYAQAAAAAAIAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>BLL\Services\IProductService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="repositoryWrapper" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ApnaDukaan_v1.DAL.Repositories.RepositoryBase&lt;T&gt;">
+    <Position X="18.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAFAAAAAAAAAAAAAAQAAAAAAAAAAAAgACAAAAIAAAIA=</HashCode>
+      <FileName>DAL\Repositories\IBaseRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ApnaDukaan_v1.DAL.Repositories.ProductRepository">
+    <Position X="18.5" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\Repositories\IBaseRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="ApnaDukaan_v1.BLL.Services.IProductService">
+    <Position X="14.25" Y="3" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BLL\Services\IProductService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ApnaDukaan_v1.BLL.Services.IBaseService&lt;TRequestDTO, TResponseDTO&gt;">
+    <Position X="14.25" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>BLL\Services\IProductService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ApnaDukaan_v1.DAL.Repositories.IRepositoryWrapper">
+    <Position X="10.25" Y="5.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAIAAAAAAAAEAAAAAACA=</HashCode>
+      <FileName>DAL\Repositories\IBaseRepository.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ProductRepository" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="ApnaDukaan_v1.DAL.Repositories.IProductRepository">
+    <Position X="10.75" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\Repositories\IBaseRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ApnaDukaan_v1.DAL.Repositories.IBaseRepository&lt;T&gt;">
+    <Position X="10.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAFAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAIAAAIA=</HashCode>
+      <FileName>DAL\Repositories\IBaseRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
