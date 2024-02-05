@@ -34,15 +34,9 @@ namespace ApnaDukaan_v1.BLL.Services
         public async Task<ProductResponseDTO> Add(ProductRequestDTO requestDTO)
         {
             var product = mapper.Map<Product>(requestDTO);
-            
-
             var productResponse = await this.repositoryWrapper.ProductRepository.CreateAsync(product);
-
-            throw new ApplicationException("THis is not expected from you! ");
             await this.repositoryWrapper.SaveAsync();
-
             var result = mapper.Map<ProductResponseDTO>(productResponse);
-
             return result;
         }
 

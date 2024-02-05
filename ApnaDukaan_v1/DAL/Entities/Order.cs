@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ApnaDukaan_v1.DAL.Entities.Enums;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ApnaDukaan_v1.DAL.Entities
 {
@@ -15,6 +17,8 @@ namespace ApnaDukaan_v1.DAL.Entities
         public double TotalAmount { get; set; }
         public int AddressId { get; set; }
         public DateTime CreatedAt { get; set; }
+
+        [EnumDataType(typeof(OrderStatusEnum))]
         public int OrderStatus { get; set; }
 
         public virtual Address Address { get; set; } = null!;

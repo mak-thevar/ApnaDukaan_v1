@@ -44,8 +44,13 @@ namespace ApnaDukaan_v1.Controllers
             }
             catch (DbUpdateException dbex)
             {
-                ModelState.AddModelError("Error", $"Category with id {productDTO.CategoryId} not found.");
+                ModelState.AddModelError("error", $"Category with id {productDTO.CategoryId} not found.");
                 return BadRequest(ModelState);
+                
+                //ModelState.AddModelError("Error", $"Category with id {productDTO.CategoryId} not found.");
+                //return BadRequest(ModelState);
+
+
                 //return Problem(title: "Error", detail: $"Category with id {productDTO.CategoryId} not found.", statusCode: 400);
             }
         }

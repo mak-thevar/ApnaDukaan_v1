@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="DAL\DBContext\" />
-    <Folder Include="DAL\Entities\" />
   </ItemGroup>
 
 </Project>

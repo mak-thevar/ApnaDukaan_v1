@@ -106,6 +106,19 @@ namespace ApnaDukaan_v1.DAL.Repositories
     }
 
 
+    public interface IOrderRepository : IBaseRepository<Order>
+    {
+    }
+
+
+    public class OrderRepository : RepositoryBase<Order>, IOrderRepository
+    {
+        public OrderRepository(ApnaDukaanContext dbContext) : base(dbContext)
+        {
+        }
+    }
+
+
     public class ProductRepository : RepositoryBase<Product>, IProductRepository
     {
         public ProductRepository(ApnaDukaanContext dbContext) : base(dbContext) { }

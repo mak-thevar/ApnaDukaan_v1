@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApnaDukaan_v1", "ApnaDukaan_v1\ApnaDukaan_v1.csproj", "{BB8FBB95-1244-4888-AF1D-40DE67BF384A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApnaDukaan_v1", "ApnaDukaan_v1\ApnaDukaan_v1.csproj", "{BB8FBB95-1244-4888-AF1D-40DE67BF384A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAndAuthorizationPOC", "AuthenticationAndAuthorizationPOC\AuthenticationAndAuthorizationPOC.csproj", "{14DCBA36-36E9-40B1-882C-0B38796A9677}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{BB8FBB95-1244-4888-AF1D-40DE67BF384A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB8FBB95-1244-4888-AF1D-40DE67BF384A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB8FBB95-1244-4888-AF1D-40DE67BF384A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14DCBA36-36E9-40B1-882C-0B38796A9677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14DCBA36-36E9-40B1-882C-0B38796A9677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14DCBA36-36E9-40B1-882C-0B38796A9677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14DCBA36-36E9-40B1-882C-0B38796A9677}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
