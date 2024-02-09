@@ -29,10 +29,19 @@ namespace AuthenticationAndAuthorizationPOC.Controllers
             var result = await userService.IsValidUser(loginRequestDTO);
             if(result is not null)
             {
-                var iss = configuration["JWT:ValidIssuer"];
-                var aud = configuration["JWT:ValidAudience"];
-                var secret = configuration["JWT:Secret"];
-                var token = JWTTokenManager.GenerateToken(iss, aud, result.UserId.ToString(), result.Username, result.RoleName, secret);
+
+                var token = JWTHelper.GenerateToken(configuration, new Dictionary<string, string>
+                {
+
+                    {ClaimTypes.NameIdentifier, result.Username },
+                    {ClaimTypes.Role, result.RoleName},
+                    {ClaimTypes.Sid, result.UserId.ToString()},
+
+                 });
+                //var iss = configuration["JWT:ValidIssuer"];
+                //var aud = configuration["JWT:ValidAudience"];
+                //var secret = configuration["JWT:Secret"];
+                //var token = JWTTokenManager.GenerateToken(iss, aud, result.UserId.ToString(), result.Username, result.RoleName, secret);
                 result.LoginToken = token;
                 return Ok(result);
             }

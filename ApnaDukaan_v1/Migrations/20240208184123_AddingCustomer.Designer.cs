@@ -4,6 +4,7 @@ using ApnaDukaan_v1.DAL.DBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApnaDukaan_v1.Migrations
 {
     [DbContext(typeof(ApnaDukaanContext))]
-    partial class ApnaDukaanContextModelSnapshot : ModelSnapshot
+    [Migration("20240208184123_AddingCustomer")]
+    partial class AddingCustomer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

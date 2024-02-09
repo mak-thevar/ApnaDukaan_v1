@@ -213,6 +213,15 @@ namespace ApnaDukaan_v1.DAL.DBContext
 
             modelBuilder.Entity<Category>()
                 .HasData(SeedingInitalData.GetCategories());
+
+            modelBuilder.Entity<User>()
+                .HasData(SeedingInitalData.GetAdminUser());
+
+            modelBuilder.Entity<User>()
+                .HasData(SeedingInitalData.GetCustomer());
+
+            modelBuilder.Entity<Address>()
+                .HasData(SeedingInitalData.GetAddress());
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

@@ -27,10 +27,7 @@ namespace ApnaDukaan_v1.Controllers
         {
             var products = await this.productService.GetAll();
 
-            var result = mapper.Map<IEnumerable<ProductResponseDTO>>(products);
-
-
-            return Ok(result);
+            return Ok(products);
         }
 
         [HttpPost]

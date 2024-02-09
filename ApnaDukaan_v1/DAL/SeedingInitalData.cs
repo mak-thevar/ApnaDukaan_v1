@@ -1,4 +1,6 @@
 ﻿using ApnaDukaan_v1.DAL.Entities;
+using ApnaDukaan_v1.DAL.Entities.Enums;
+using Microsoft.AspNetCore.Identity;
 
 namespace ApnaDukaan_v1.DAL
 {
@@ -52,5 +54,59 @@ namespace ApnaDukaan_v1.DAL
                 },
             };
         }
+
+        public static User GetAdminUser()
+        {
+            var password = new PasswordHasher<object>().HashPassword(null, "pwd@1234");
+            return new User
+            {
+                Id = 1,
+                FirstName = "Mak",
+                LastName = "Thevar",
+                Email = "mak.thevar@outlook.com",
+                RoleId = 2,
+                Username = "mkthevar",
+                PhoneNo = "9888888888",
+                PasswordHash = password,
+            };
+        }
+
+        public static User GetCustomer()
+        {
+            var password = new PasswordHasher<object>().HashPassword(null, "pwd@1234");
+            return new User
+            {
+                Id = 2,
+                FirstName = "Punit",
+                LastName = "Gupta",
+                Email = "punit@gmail.com",
+                RoleId = 1,
+                Username = "punit",
+                PhoneNo = "9888888881",
+                PasswordHash = password,
+                Dob = DateTime.Now.Date.AddYears(-20),
+                Gender = (int)GenderEnum.Male,
+            };
+
+        }
+
+        public static Address GetAddress()
+        {
+
+
+            return new Address
+            {
+                Id = 1,
+                City = "Mumbai",
+                Landmark = "something",
+                Pincode = "400701",
+                State = "Maharashtra",
+                StreetAddress = "Some street",
+                UserId =2
+            };
+
+        }
+
+
     }
 }

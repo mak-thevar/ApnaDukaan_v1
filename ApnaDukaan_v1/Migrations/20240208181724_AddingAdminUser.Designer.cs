@@ -4,6 +4,7 @@ using ApnaDukaan_v1.DAL.DBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApnaDukaan_v1.Migrations
 {
     [DbContext(typeof(ApnaDukaanContext))]
-    partial class ApnaDukaanContextModelSnapshot : ModelSnapshot
+    [Migration("20240208181724_AddingAdminUser")]
+    partial class AddingAdminUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,18 +70,6 @@ namespace ApnaDukaan_v1.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Addresses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            City = "Mumbai",
-                            Landmark = "something",
-                            Pincode = "400701",
-                            State = "Maharashtra",
-                            StreetAddress = "Some street",
-                            UserId = 2
-                        });
                 });
 
             modelBuilder.Entity("ApnaDukaan_v1.DAL.Entities.Cart", b =>
@@ -375,23 +365,10 @@ namespace ApnaDukaan_v1.Migrations
                             Email = "mak.thevar@outlook.com",
                             FirstName = "Mak",
                             LastName = "Thevar",
-                            PasswordHash = "AQAAAAEAACcQAAAAENyoSl0NLDSaKGlekdGzQSlYCY0Eek408Gc6JiYV0HOOIiVVmTTk5JVr7OnsfRk3wQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEB612RH/X0CfAJ85yOS2FS2XSZp81H+9VUfcpJi/2+Uxu3VW5SdKjnKC+eH741oKjw==",
                             PhoneNo = "9888888888",
                             RoleId = 2,
                             Username = "mkthevar"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Dob = new DateTime(2004, 2, 9, 0, 0, 0, 0, DateTimeKind.Local),
-                            Email = "punit@gmail.com",
-                            FirstName = "Punit",
-                            Gender = 1,
-                            LastName = "Gupta",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFUJb8b0MnzmhkNKIwaQyO4G20T+HNuhVQ6eO1sYKiaKPw5FYJLX0EO4QADBozf5bA==",
-                            PhoneNo = "9888888881",
-                            RoleId = 1,
-                            Username = "punit"
                         });
                 });
 

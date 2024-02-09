@@ -5,7 +5,7 @@ using AutoMapper;
 
 namespace ApnaDukaan_v1.BLL.Services
 {
-    public interface IBaseService<TRequestDTO,TResponseDTO>
+    public interface IBaseService<TRequestDTO, TResponseDTO>
     {
         Task<IEnumerable<TResponseDTO>> GetAll();
         Task<TResponseDTO> GetById(int id);
@@ -45,9 +45,11 @@ namespace ApnaDukaan_v1.BLL.Services
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<ProductResponseDTO>> GetAll()
+        public async Task<IEnumerable<ProductResponseDTO>> GetAll()
         {
-            throw new NotImplementedException();
+            var productList = await this.repositoryWrapper.ProductRepository.GetAllAsync("Category");
+            var productResponseDTO = mapper.Map<IEnumerable<ProductResponseDTO>>(productList);
+            return productResponseDTO;
         }
 
         public Task<ProductResponseDTO> GetById(int id)
