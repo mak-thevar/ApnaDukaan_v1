@@ -108,13 +108,23 @@ namespace ApnaDukaan_v1.DAL.Repositories
 
     public interface IOrderRepository : IBaseRepository<Order>
     {
+        Task<IEnumerable<Order>> GetOrders();
     }
 
 
     public class OrderRepository : RepositoryBase<Order>, IOrderRepository
     {
+        private readonly ApnaDukaanContext dbContext;
+
         public OrderRepository(ApnaDukaanContext dbContext) : base(dbContext)
         {
+            this.dbContext = dbContext;
+        }
+
+        public Task<IEnumerable<Order>> GetOrders()
+        {
+            var result = this.dbContext.Orders.Include(x => x.Address).Include(x => x.OrderDetails).ThenInclude(x => x.Product).AsEnumerable();
+            return Task.FromResult(result);
         }
     }
 
@@ -129,6 +139,7 @@ namespace ApnaDukaan_v1.DAL.Repositories
         public IRoleRepository RoleRepository { get; set; }
         public ICategoryRepository CategoryRepository { get; set; }
         public IProductRepository ProductRepository { get; set; }
+        public IOrderRepository OrderRepository { get; set; }
 
         Task<int> SaveAsync();
     }
@@ -140,6 +151,7 @@ namespace ApnaDukaan_v1.DAL.Repositories
         public IRoleRepository RoleRepository { get; set; }
         public ICategoryRepository CategoryRepository { get; set; }
         public IProductRepository ProductRepository { get; set; }
+        public IOrderRepository OrderRepository { get; set; }
 
         public RepositoryWrapper(ApnaDukaanContext dbContext)
         {
@@ -148,10 +160,14 @@ namespace ApnaDukaan_v1.DAL.Repositories
             RoleRepository = new RoleRepository(dbContext);
             CategoryRepository = new CategoryRepository(dbContext);
             ProductRepository = new ProductRepository(dbContext);
+            OrderRepository = new OrderRepository(dbContext);
         }
 
         public async Task<int> SaveAsync()
         {
+
+            dbContext.Categories.Where(x => true).AsEnumerable();
+
             return await this.dbContext.SaveChangesAsync();
         }
     }

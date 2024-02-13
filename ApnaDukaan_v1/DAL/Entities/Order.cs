@@ -19,7 +19,7 @@ namespace ApnaDukaan_v1.DAL.Entities
         public DateTime CreatedAt { get; set; }
 
         [EnumDataType(typeof(OrderStatusEnum))]
-        public int OrderStatus { get; set; }
+        public OrderStatusEnum OrderStatus { get; set; }
 
         public virtual Address Address { get; set; } = null!;
         public virtual User User { get; set; } = null!;

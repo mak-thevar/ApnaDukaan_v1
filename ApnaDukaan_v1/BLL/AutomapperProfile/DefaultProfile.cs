@@ -10,6 +10,9 @@ namespace ApnaDukaan_v1.BLL.AutomapperProfile
         {
             CreateMap<ProductRequestDTO, Product>();
             CreateMap<Product, ProductResponseDTO>();
+
+            CreateMap<Order, OrderResponseDTO>();
+            CreateMap<OrderDetail, OrderDetailResponseDTO>();
         }
     }
 }
