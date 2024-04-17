@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using ApnaDukaan_v1.BLL.Exceptions;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 
@@ -23,11 +24,17 @@ namespace ApnaDukaan_v1.BLL.Middlewares
             }
             catch (Exception ex)
             {
-                httpContext.Response.StatusCode = 500;
+                var statusCode = ex switch
+                {
+                    LoginException =>  401,
+                    _=> 500
+                };
 
+                httpContext.Response.StatusCode = statusCode;
+                
                 await httpContext.Response.WriteAsJsonAsync(new
                 {
-                    Status = 500,
+                    Status = statusCode,
                     Success = false,
                     Message = ex.Message
                 });

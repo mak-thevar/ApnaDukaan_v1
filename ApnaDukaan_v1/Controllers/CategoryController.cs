@@ -1,5 +1,5 @@
 ﻿using ApnaDukaan_v1.DAL.Entities;
-using ApnaDukaan_v1.DAL.Repositories;
+using ApnaDukaan_v1.DAL.Repositories.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

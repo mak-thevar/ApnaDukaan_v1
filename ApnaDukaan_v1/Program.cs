@@ -1,7 +1,10 @@
 using ApnaDukaan_v1.BLL.Middlewares;
 using ApnaDukaan_v1.BLL.Services;
+using ApnaDukaan_v1.BLL.Services.Impl;
 using ApnaDukaan_v1.DAL.DBContext;
-using ApnaDukaan_v1.DAL.Repositories;
+using ApnaDukaan_v1.DAL.Repositories.Impl;
+using ApnaDukaan_v1.DAL.Repositories.Interface;
+using AuthenticationAndAuthorizationPOC.BLL;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,14 +18,19 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
-builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IServiceManager, ServiceManager>();
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
+
+builder.Services.AddAndConfigureAuthentication(builder.Configuration);
 
 builder.Services.AddDbContext<ApnaDukaanContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConStr"));
+    opt.EnableServiceProviderCaching(true);
+    opt.EnableThreadSafetyChecks();
+    opt.EnableSensitiveDataLogging();
 });
 
 var app = builder.Build();

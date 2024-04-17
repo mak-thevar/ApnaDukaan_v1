@@ -1,4 +1,5 @@
 ﻿using ApnaDukaan_v1.BLL.DTOs;
+using ApnaDukaan_v1.BLL.Exceptions;
 using ApnaDukaan_v1.BLL.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +13,9 @@ namespace ApnaDukaan_v1.Controllers
     {
         private readonly IOrderService orderService;
 
-        public OrderController(IOrderService orderService)
+        public OrderController(IServiceManager serviceManager)
         {
-            this.orderService = orderService;
+            this.orderService = serviceManager.OrderService;
         }
 
         [HttpGet]
@@ -31,10 +32,10 @@ namespace ApnaDukaan_v1.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(OrderResponseDTO),200)]
         public async Task<IActionResult> CreateOrder(OrderRequestDTO orderRequestDTO)
         {
             var userId = 2;  //User.Claims.SingleOrDefault(x=>x.Type == ClaimTypes.id)
-
             var result = await this.orderService.Add(userId, orderRequestDTO);
             return Ok(result);
         }

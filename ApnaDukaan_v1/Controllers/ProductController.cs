@@ -1,10 +1,12 @@
 ﻿using ApnaDukaan_v1.BLL.DTOs;
+using ApnaDukaan_v1.BLL.Exceptions;
 using ApnaDukaan_v1.BLL.Services;
 using ApnaDukaan_v1.DAL.Entities;
 using ApnaDukaan_v1.DAL.Repositories;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApnaDukaan_v1.Controllers
@@ -13,17 +15,17 @@ namespace ApnaDukaan_v1.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly IProductService  productService;
+        private readonly IProductService productService;
         private readonly IMapper mapper;
 
-        public ProductController(IProductService productService, IMapper mapper)
+        public ProductController(IServiceManager serviceManager, IMapper mapper)
         {
-            this.productService= productService;
+            this.productService = serviceManager.ProductService;
             this.mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get() 
+        public async Task<IActionResult> Get()
         {
             var products = await this.productService.GetAll();
 
@@ -35,20 +37,16 @@ namespace ApnaDukaan_v1.Controllers
         {
             try
             {
-              
+
                 var result = await this.productService.Add(productDTO);
                 return Ok(result);
             }
-            catch (DbUpdateException dbex)
+            catch (BusinessException ex)
             {
-                ModelState.AddModelError("error", $"Category with id {productDTO.CategoryId} not found.");
-                return BadRequest(ModelState);
-                
-                //ModelState.AddModelError("Error", $"Category with id {productDTO.CategoryId} not found.");
-                //return BadRequest(ModelState);
-
-
-                //return Problem(title: "Error", detail: $"Category with id {productDTO.CategoryId} not found.", statusCode: 400);
+                return Problem(
+                     title: ex.Title,
+                     detail: ex.Message,
+                     statusCode: 400);
             }
         }
     }
